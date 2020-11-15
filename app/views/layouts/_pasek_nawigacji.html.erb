@@ -1,9 +1,7 @@
 
 <div class="ui small inverted menu">
   <div class="ui container">
-    <a class="item">
-      Czat
-    </a>
+    <a><%= link_to 'Czat', root_path, class:"item" %></a>
     <a class="item">
       Wiadomości
     </a>
@@ -11,7 +9,7 @@
       <div class="ui dropdown item">
         Konto <i class="dropdown icon"></i>
         <div class="menu">
-          <a class="item">Zaloguj</a>
+          <a><%= link_to 'Zaloguj', login_path, class:"item" %></a>
           <a class="item">Wyloguj</a>
           <a class="item">Zapisz się!</a>
         </div>
