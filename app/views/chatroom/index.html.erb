@@ -6,47 +6,20 @@
 <div class="ui two column grid">
     <div class="twelve wide column">
         <div class="ui fluid raised card chatbox">
-            <div class="content">
-                <div class="ui feed">
-                    <div class="event">
-                        <div class="content">
-                        <div class="summary">
-                            <a>Elliot Fu</a> added <a>Jenny Hess</a> as a friend
-                        </div>
-                        </div>
-                    </div>
-                    <div class="event">
-                        <div class="content">
-                        <div class="summary">
-                            <a>Stevie Feliciano</a> added <a>Elliot Fu</a> as a friend
-                        </div>
-                        </div>
-                    </div>
-                    <div class="event">
-                        <div class="content">
-                        <div class="summary">
-                            <a>Helen Troy</a> added <a>Christian Rocha</a> as a friend
-                        </div>
-                        </div>
-                    </div>
-                    <div class="event">
-                        <div class="content">
-                        <div class="summary">
-                            <em>Christian Rocha</em> Wiadomość testowa
-                        </div>
-                        </div>
-                    </div>
+            <div class="content" id="messages">
+                <div class="ui feed" id="message-container">
+                    <%= render @messages %>
                 </div>
             </div>
             <div class="extra content">
-                  <form class="ui reply form">
+                <%= form_for(@message, html: {class: "ui reply form", role: "form"}, url: message_path, remote: true) do |f|%>
                     <div class="field">
                         <div class="ui fluid icon input">
-                            <input type="text" placeholder="Napisz wiadomość...">
-                            <i class="bordered inverted blue edit icon"></i>
+                            <%= f.text_field :body %>
+                            <%= f.button '<i class="bordered inverted blue edit icon"></i>'.html_safe %>
                         </div>
                     </div>
-                </form>
+                <% end %>
             </div>
         </div>
     </div>
@@ -57,7 +30,7 @@
                 <div class="ui inverted vertical menu">
                     <a class="active item">
                         Home
-                        
+
                     </a>
                     <a class="item">
                         Messages

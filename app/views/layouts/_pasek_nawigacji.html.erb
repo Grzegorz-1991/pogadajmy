@@ -9,14 +9,19 @@
       <div class="ui dropdown item">
         Konto <i class="dropdown icon"></i>
         <div class="menu">
-          <a><%= link_to 'Zaloguj', login_path, class:"item" %></a>
-          <a class="item">Wyloguj</a>
-          <a class="item">Zapisz się!</a>
+          <% if logged_in? %>
+            <%= link_to 'Wyloguj', logout_path, method: :delete, class: "item" %>
+          <% else %>
+            <%= link_to 'Zaloguj', login_path, class:"item" %>
+            <%= link_to 'Zapisz się!', login_path, class:"item" %>
+          <% end %>
         </div>
       </div>
-      <div class="item">
-          <div class="ui primary button">Zapisz się</div>
-      </div>
+      <% if !logged_in? %>
+        <div class="item">
+          <%= link_to 'Zaloguj', login_path, class:"ui primary button" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
